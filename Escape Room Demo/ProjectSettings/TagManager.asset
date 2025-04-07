@@ -4,8 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Output
-  - Input
+  - Green
+  - Red
+  - Blue
   layers:
   - Default
   - TransparentFX
