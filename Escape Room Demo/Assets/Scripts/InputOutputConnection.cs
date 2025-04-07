@@ -2,16 +2,36 @@ using UnityEngine;
 
 public class InputOutputConnection : MonoBehaviour
 {
-    void OnTriggerEnter(Collider other)
+    //Set up the wire and anchor its start to the origin it was called from
+    public static void getWire(LineRenderer wire, Transform originPort)
     {
-        switch(other.gameObject.tag)
+        if(!GameManager.wireHeld)
         {
-            case "Output":
-                Debug.Log("Hit " + other.gameObject.name + " output");
-                break;
-            case "Input":
-                Debug.Log("Hit " + other.gameObject.name + " input");
-                break;
+            //Set wire to have 2 tracked positions to draw between
+            wire.positionCount = 2;
+            //Set origin port to be the wire origin
+            wire.SetPosition(0, originPort.position);
+        }
+        GameManager.wireHeld = true;
+    }
+    //Set the wire endpoint to the player position
+    public static void followPlayer(LineRenderer wire, Transform playerPos)
+    {
+        //Set wire endpoint to player position
+        wire.SetPosition(1, playerPos.position);
+    }
+    //Set the wire to connect to the input it was called from if possible, return if this was successful
+    public static bool setWire(LineRenderer wire, Transform inputPort)
+    {
+        if(GameManager.wireHeld)
+        {
+            wire.SetPosition(1, inputPort.position);
+            return true;
+        }
+        else
+        {
+            GameManager.wireHeld = false;
+            return false;
         }
     }
 }

@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    //Store wire completion as bool (default is false)
-    public static bool wire1, wire2, wire3, wire4;
+    //Store wire completion as bool
+    public static bool greenWire = false, blueWire = false, redWire = false, yelloWire = false;
+    public static bool wireHeld = false;
+    public static bool holdGreen = false, holdBlue = false, holdRed = false, holdYellow = false;
 }
