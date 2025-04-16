@@ -13,9 +13,9 @@ public class WireManager : MonoBehaviour
     {
         playerPos = GameObject.Find("Player").GetComponent<Transform>();
         wires[0] = GameObject.Find("GreenWire").GetComponent<LineRenderer>();
-        // wires[0] = GameObject.Find("BlueWire").GetComponent<LineRenderer>();
-        // wires[0] = GameObject.Find("RedWire").GetComponent<LineRenderer>();
-        // wires[0] = GameObject.Find("YellowWire").GetComponent<LineRenderer>();
+        wires[1] = GameObject.Find("BlueWire").GetComponent<LineRenderer>();
+        wires[2] = GameObject.Find("RedWire").GetComponent<LineRenderer>();
+        wires[3] = GameObject.Find("YellowWire").GetComponent<LineRenderer>();
     }
     void OnTriggerEnter(Collider other)
     {
@@ -27,20 +27,32 @@ public class WireManager : MonoBehaviour
                     switch(this.gameObject.tag)
                     {
                         case "Green":
-                            InputOutputConnection.getWire(wires[0], this.gameObject.transform);
-                            GameManager.holdGreen = true;
+                            if(!GameManager.greenWire && !GameManager.wireHeld)
+                            {
+                                InputOutputConnection.getWire(wires[0], this.gameObject.transform);
+                                GameManager.holdGreen = true;
+                            }
                             break;
                         case "Blue":
-                            InputOutputConnection.getWire(wires[1], this.gameObject.transform);
-                            GameManager.holdBlue = true;
+                            if(!GameManager.blueWire && !GameManager.wireHeld)
+                            {
+                                InputOutputConnection.getWire(wires[1], this.gameObject.transform);
+                                GameManager.holdBlue = true;
+                            }
                             break;
                         case "Red":
-                            InputOutputConnection.getWire(wires[2], this.gameObject.transform);
-                            GameManager.holdRed = true;
+                            if(!GameManager.redWire && !GameManager.wireHeld)
+                            {
+                                InputOutputConnection.getWire(wires[2], this.gameObject.transform);
+                                GameManager.holdRed = true;
+                            }
                             break;
                         case "Yellow":
-                            InputOutputConnection.getWire(wires[3], this.gameObject.transform);
-                            GameManager.holdYellow = true;
+                            if(!GameManager.yellowWire && !GameManager.wireHeld)
+                            {
+                                InputOutputConnection.getWire(wires[3], this.gameObject.transform);
+                                GameManager.holdYellow = true;
+                            }
                             break;
                     }
                     break;
@@ -75,7 +87,7 @@ public class WireManager : MonoBehaviour
                             if(GameManager.holdYellow)
                                 if(InputOutputConnection.setWire(wires[3], this.gameObject.transform))
                                 {
-                                    GameManager.yelloWire = true;                                    
+                                    GameManager.yellowWire = true;                                    
                                     GameManager.holdYellow = false;
                                 }
                             break;

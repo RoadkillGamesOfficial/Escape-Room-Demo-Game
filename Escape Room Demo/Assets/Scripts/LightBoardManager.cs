@@ -9,5 +9,17 @@ public class LightBoardManager : MonoBehaviour
         {
             greenLight.GetComponentInChildren<Light>().enabled = true;
         }
+        if(GameManager.blueWire)
+        {
+            blueLight.GetComponentInChildren<Light>().enabled = true;
+        }
+        if(GameManager.redWire)
+        {
+            redLight.GetComponentInChildren<Light>().enabled = true;
+        }
+        if(GameManager.yellowWire)
+        {
+            yellowLight.GetComponentInChildren<Light>().enabled = true;
+        }
     }
 }

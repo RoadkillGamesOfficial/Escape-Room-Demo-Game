@@ -26,11 +26,11 @@ public class InputOutputConnection : MonoBehaviour
         if(GameManager.wireHeld)
         {
             wire.SetPosition(1, inputPort.position);
+            GameManager.wireHeld = false;
             return true;
         }
         else
         {
-            GameManager.wireHeld = false;
             return false;
         }
     }
