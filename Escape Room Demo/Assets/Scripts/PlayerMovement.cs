@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         //Movement bounding
-        float verticalMultiplier = ((Input.GetAxis("Vertical") < 0 && player.position.z > -91) || (Input.GetAxis("Vertical") > 0 && player.position.z < 415)) ? Input.GetAxis("Vertical") : 0;
+        float verticalMultiplier = ((Input.GetAxis("Vertical") < 0 && player.position.z > -80) || (Input.GetAxis("Vertical") > 0 && player.position.z < 415)) ? Input.GetAxis("Vertical") : 0;
         float horizontalMultiplier = ((Input.GetAxis("Horizontal") < 0 && player.position.x > -115) || (Input.GetAxis("Horizontal") > 0 && player.position.x < 107)) ? Input.GetAxis("Horizontal") : 0;
         //Resolution multiplier for consistency across resolutions
         int referenceWidth = 723, referenceHeight = 407;
