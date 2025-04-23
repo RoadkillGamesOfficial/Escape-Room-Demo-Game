@@ -4,6 +4,11 @@ public class PlayerMovement : MonoBehaviour
 {
     public Transform player;
     private float moveSpeed = 0.80f;
+    private Vector3 startPosition;
+    void Start()
+    {
+        startPosition = this.gameObject.transform.position;
+    }
     void FixedUpdate()
     {
         //Movement bounding
@@ -14,5 +19,9 @@ public class PlayerMovement : MonoBehaviour
         float heightMultiplier = Screen.height/referenceHeight;
         float widthMultiplier = Screen.width/referenceWidth;
         player.position = new Vector3(player.position.x + horizontalMultiplier * moveSpeed * widthMultiplier, player.position.y, player.position.z + verticalMultiplier * moveSpeed * heightMultiplier);
+    }
+    public void resetPosition()
+    {
+        this.gameObject.transform.position = startPosition;
     }
 }
